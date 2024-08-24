@@ -11,20 +11,14 @@ public class GCDProgram {
         System.out.print("Enter the second number: ");
         int num2 = scanner.nextInt();
 
-        // Calculate the GCD using the Euclidean algorithm
-        int gcd = findGCD(num1, num2);
+        // Calculate the GCD using the Euclidean algorithm directly in the main method
+        while (num2 != 0) {
+            int temp = num2;
+            num2 = num1 % num2;
+            num1 = temp;
+        }
 
         // Output: Display the GCD
-        System.out.println("GCD is " + gcd);
-    }
-
-    // Function to find GCD using Euclidean algorithm
-    public static int findGCD(int a, int b) {
-        while (b != 0) {
-            int temp = b;
-            b = a % b;
-            a = temp;
-        }
-        return a;
+        System.out.println("GCD is " + num1);
     }
 }
