@@ -5,20 +5,21 @@ public class EvenSumFibonacci {
         // Input: Get the value of N from the user
         System.out.print("Enter the value of N: ");
         int n = scanner.nextInt();
-        // Initialize variables
-        int sum = 0;
+        // Variables to hold the Fibonacci numbers and sum of even-indexed terms
         int firstTerm = 0, secondTerm = 1;
-        // Loop to generate the Fibonacci series and sum the numbers at even indices
-        for (int i = 0; i <= n; i++) {
-            if (i % 2 == 0) {  // Check if the index is even
+        int nextTerm;
+        int sum = 0;
+        // Print the Fibonacci series and calculate the sum of even-indexed terms
+        for (int i = 0; i <= 2 * n; i++) { // Generate up to the 2n-th term
+            if (i % 2 == 0) {
                 sum += firstTerm;
             }
-            // Calculate the next term in the Fibonacci series
-            int nextTerm = firstTerm + secondTerm;
+            // Calculate the next term
+            nextTerm = firstTerm + secondTerm;
             firstTerm = secondTerm;
             secondTerm = nextTerm;
         }
         // Output: Display the sum
-        System.out.println("Sum of numbers at even indices in Fibonacci series till index " + n + " is: " + sum);
+        System.out.println("Sum of numbers at even indexes: " + sum);
     }
 }
