@@ -4,18 +4,17 @@ public class PrimeCompositeCounter {
         Scanner scanner = new Scanner(System.in);
         int primeCount = 0;
         int compositeCount = 0;
-        System.out.println("Enter the numbers (type 'end' to finish):");
-        while (scanner.hasNextInt()) {
+        System.out.println("Enter numbers (negative number to stop):");
+        while (true) {
             int num = scanner.nextInt();
-            if (num < 2) {
-                if (num == 1) {
-                    continue;
-                } else {
-                    continue;
-                }
+            if (num < 0) {
+                break; // Stop input on negative number
+            }
+            if (num == 0 || num == 1) {
+                continue; // 0 and 1 are neither prime nor composite
             }
             boolean isPrime = true;
-            for (int i = 2; i <= Math.sqrt(num); i++) {
+            for (int i = 2; i <= num / 2; i++) {
                 if (num % i == 0) {
                     isPrime = false;
                     break;
@@ -27,7 +26,8 @@ public class PrimeCompositeCounter {
                 compositeCount++;
             }
         }
-        System.out.println("Prime numbers: " + primeCount);
-        System.out.println("Composite numbers: " + compositeCount);
+        System.out.println("Prime count: " + primeCount);
+        System.out.println("Composite count: " + compositeCount);
+        scanner.close();
     }
 }
