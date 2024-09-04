@@ -1,0 +1,26 @@
+import java.util.Scanner;
+
+public class RectanglePattern {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Get the symbol from the user
+        System.out.print("Enter the symbol to use: ");
+        char symbol = scanner.next().charAt(0);
+
+        // Get the dimensions of the rectangle
+        System.out.print("Enter the height of the rectangle: ");
+        int height = scanner.nextInt();
+
+        System.out.print("Enter the width of the rectangle: ");
+        int width = scanner.nextInt();
+
+        // Print the rectangle pattern
+        for (int i = 0; i < height; i++) {
+            for (int j = 0; j < width; j++) {
+                System.out.print(symbol + " ");
+            }
+            System.out.println(); // Move to the next line after each row
+        }
+    }
+}
