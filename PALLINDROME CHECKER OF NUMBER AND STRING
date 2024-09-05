@@ -1,41 +1,53 @@
+
+package scanner;
 import java.util.Scanner;
-public class PalindromeChecker {
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("Enter the case (1 for string, 2 for number): ");
-        int choice = scanner.nextInt();
-        scanner.nextLine(); // Consume the newline character
-        switch (choice) {
-            case 1:
-                System.out.print("Enter the string: ");
-                String inputString = scanner.nextLine();
-                String reversedString = "";
-                for (int i = inputString.length() - 1; i >= 0; i--) {
-                    reversedString += inputString.charAt(i);
-                }
-                if (inputString.equalsIgnoreCase(reversedString)) {
-                    System.out.println("Palindrome");
-                } else {
-                    System.out.println("Not a Palindrome");
-                }
-                break;
-            case 2:
-                System.out.print("Enter the number: ");
-                String inputNumber = scanner.nextLine();
-                String reversedNumber = "";
-                for (int i = inputNumber.length() - 1; i >= 0; i--) {
-                    reversedNumber += inputNumber.charAt(i);
-                }
-                if (inputNumber.equals(reversedNumber)) {
-                    System.out.println("Palindrome");
-                } else {
-                    System.out.println("Not a Palindrome");
-                }
-                break;
-            default:
-                System.out.println("Invalid choice");
-                break;
-        }
-        scanner.close();
-    }
+public class Palindrome {
+	public static void main(String args[]) {
+		int choice;
+		Scanner scan=new Scanner (System.in);
+		choice=scan.nextInt();
+		switch(choice)
+		{
+		case 1:
+			int number,rev=0,rem,ori;
+		
+			System.out.println("enter the number");
+			number=scan.nextInt();
+			ori =number;
+			while(number!=0)
+			{
+				rem=number%10;
+				rev=rev*10+rem;
+				number/=10;
+			}
+			if(ori==rev)
+			{
+				System.out.println("palindrome");
+			}
+			else
+			{
+				System.out.println("not a palindrome");
+			}
+			break;
+		
+		case 2:
+			int i;
+			String name="temple";
+			String reve= "";
+					for(i=name.length()-1;i>=0;i--)
+					{
+						reve+=name.charAt(i);
+					}
+					if (name.equals(reve))
+					{
+						System.out.println("palindrome");
+					}
+					else
+					{
+						System.out.println("not a palindrome");	
+					}
+					break;
+		}
+		
+	}
 }
