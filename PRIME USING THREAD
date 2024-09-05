@@ -1,0 +1,49 @@
+// File: PrimeCheckRunnable.java
+
+// Implementing Runnable interface to check for prime numbers
+class PrimeCheckRunnable implements Runnable {
+    private int number;
+
+    // Constructor to initialize the number
+    public PrimeCheckRunnable(int number) {
+        this.number = number;
+    }
+
+    // The run method to be executed by the thread
+    @Override
+    public void run() {
+        if (isPrime(number)) {
+            System.out.println(number + " is a prime number.");
+        } else {
+            System.out.println(number + " is not a prime number.");
+        }
+    }
+
+    // Method to check if a number is prime
+    private boolean isPrime(int num) {
+        if (num <= 1) return false;
+        if (num == 2) return true;
+        if (num % 2 == 0) return false;
+        for (int i = 3; i <= Math.sqrt(num); i += 2) {
+            if (num % i == 0) return false;
+        }
+        return true;
+    }
+}
+
+// Main class to run the PrimeCheckRunnable
+public class Main {
+    public static void main(String[] args) {
+        // Example number to check
+        int numberToCheck = 6;
+
+        // Create an instance of PrimeCheckRunnable with the number
+        PrimeCheckRunnable primeCheck = new PrimeCheckRunnable(numberToCheck);
+
+        // Create a thread to execute the runnable
+        Thread thread = new Thread(primeCheck);
+
+        // Start the thread
+        thread.start();
+    }
+}
