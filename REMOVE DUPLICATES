@@ -1,0 +1,41 @@
+import java.util.Scanner;
+import java.util.Arrays;
+public class RemoveDuplicateInArrayExample2 {
+    // Method to remove duplicate elements from the sorted array
+    public static int removeDuplicateElements(int arr[], int n) {
+        if (n == 0 || n == 1) {
+            return n;
+        }
+        int j = 0; // Index for the next unique element
+        // Iterate through the array to find unique elements
+        for (int i = 0; i < n - 1; i++) {
+            if (arr[i] != arr[i + 1]) {
+                arr[j++] = arr[i];
+            }
+        }
+        arr[j++] = arr[n - 1]; // Add the last element
+        return j; // Return the new length of the array with unique elements
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        // Get the number of elements from the user
+        System.out.print("Enter the number of elements in the array: ");
+        int n = scanner.nextInt();
+        int[] arr = new int[n];
+        // Get the array elements from the user
+        System.out.println("Enter the elements of the array:");
+        for (int i = 0; i < n; i++) {
+            arr[i] = scanner.nextInt();
+        }
+        // Sort the array before removing duplicates
+        Arrays.sort(arr);
+        // Remove duplicate elements
+        int length = removeDuplicateElements(arr, n);
+        // Print the array with duplicates removed
+        System.out.println("Array after removing duplicates:");
+        for (int i = 0; i < length; i++) {
+            System.out.print(arr[i] + " ");
+        }
+        scanner.close();
+    }
+}
