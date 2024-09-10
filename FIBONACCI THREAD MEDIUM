@@ -1,0 +1,34 @@
+class FibonacciRunnable implements Runnable {
+    private int count;
+
+    public FibonacciRunnable(int count) {
+        this.count = count;
+    }
+
+    @Override
+    public void run() {
+        int num1 = 0, num2 = 1;
+        System.out.print("Fibonacci Series: " + num1 + " " + num2);
+
+        for (int i = 2; i < count; i++) {
+            int sum = num1 + num2;
+            System.out.print(" " + sum);
+            num1 = num2;
+            num2 = sum;
+        }
+        System.out.println();
+    }
+}
+
+public class FibonacciThreadDemo {
+    public static void main(String[] args) {
+        int n = 10; // Number of terms in the Fibonacci series
+
+        // Create a Runnable object
+        FibonacciRunnable fibonacciRunnable = new FibonacciRunnable(n);
+
+        // Create a Thread object and start the thread
+        Thread thread = new Thread(fibonacciRunnable);
+        thread.start();
+    }
+}
