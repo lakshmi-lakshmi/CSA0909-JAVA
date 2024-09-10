@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+// Class that implements Runnable to check if a number is prime
+class PrimeChecker implements Runnable {
+    private int number;
+
+    // Constructor to initialize the number
+    public PrimeChecker(int number) {
+        this.number = number;
+    }
+
+    // Method to check if the number is prime
+    @Override
+    public void run() {
+        boolean isPrime = true;
+
+        if (number <= 1) {
+            isPrime = false;
+        } else {
+            for (int i = 2; i <= Math.sqrt(number); i++) {
+                if (number % i == 0) {
+                    isPrime = false;
+                    break;
+                }
+            }
+        }
+
+        if (isPrime) {
+            System.out.println(number + " is Prime");
+        } else {
+            System.out.println(number + " is not Prime");
+        }
+    }
+
+    // Main method
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input: User enters a number to check
+        System.out.print("Enter a number to check if it's prime: ");
+        int num = scanner.nextInt();
+
+        // Create a Runnable instance with the input number
+        PrimeChecker primeChecker = new PrimeChecker(num);
+
+        // Create a thread with the Runnable instance
+        Thread thread = new Thread(primeChecker);
+
+        // Start the thread
+        thread.start();
+    }
+}
