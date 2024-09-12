@@ -1,0 +1,32 @@
+import java.util.Scanner;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.DayOfWeek;
+
+public class DayOfWeekFinder {
+    
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        
+        // Input: day, month, and year
+        System.out.print("Enter day: ");
+        int day = sc.nextInt();
+        System.out.print("Enter month: ");
+        int month = sc.nextInt();
+        System.out.print("Enter year: ");
+        int year = sc.nextInt();
+        
+        // Check if the input date is valid and within the specified range
+        if (year >= 1971 && year <= 2100) {
+            LocalDate date = LocalDate.of(year, month, day);
+            DayOfWeek dayOfWeek = date.getDayOfWeek();
+            
+            // Output the day of the week
+            System.out.println("The day of the week is: " + dayOfWeek);
+        } else {
+            System.out.println("Year should be between 1971 and 2100.");
+        }
+        
+        sc.close();
+    }
+}
