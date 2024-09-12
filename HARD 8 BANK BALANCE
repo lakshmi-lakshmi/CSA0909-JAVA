@@ -1,0 +1,59 @@
+import java.util.Scanner;
+
+public class BankAccountSimple {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        // Initialize variables
+        String depositorName;
+        String accountNumber;
+        String accountType;
+        double balance = 10000.00;  // Initial balance
+        final double MINIMUM_BALANCE = 500.00;  // Minimum balance requirement
+
+        // Read account details
+        System.out.println("Enter account number:");
+        accountNumber = scan.nextLine();
+        System.out.println("Enter depositor name:");
+        depositorName = scan.nextLine();
+        System.out.println("Enter type of account (Savings/Current):");
+        accountType = scan.nextLine();
+
+        // Display initial account details
+        System.out.println("Account Number: " + accountNumber);
+        System.out.println("Depositor Name: " + depositorName);
+        System.out.println("Account Type: " + accountType);
+        System.out.println("Balance: Rs." + balance);
+
+        // Deposit an amount
+        System.out.println("Enter amount to deposit:");
+        double depositAmount = scan.nextDouble();
+        if (depositAmount > 0) {
+            balance += depositAmount;
+            System.out.println("Deposited: Rs." + depositAmount);
+        } else {
+            System.out.println("Deposit amount must be positive.");
+        }
+
+        // Display balance after deposit
+        System.out.println("Balance after deposit: Rs." + balance);
+
+        // Withdraw an amount
+        System.out.println("Enter amount to withdraw:");
+        double withdrawAmount = scan.nextDouble();
+        if (withdrawAmount > 0 && balance - withdrawAmount >= MINIMUM_BALANCE) {
+            balance -= withdrawAmount;
+            System.out.println("Withdrew: Rs." + withdrawAmount);
+        } else if (withdrawAmount <= 0) {
+            System.out.println("Withdrawal amount must be positive.");
+        } else {
+            System.out.println("Insufficient balance. Minimum balance of Rs." + MINIMUM_BALANCE + " must be maintained.");
+        }
+
+        // Display final balance
+        System.out.println("Final Balance: Rs." + balance);
+
+        // Close the scanner
+        scan.close();
+    }
+}
