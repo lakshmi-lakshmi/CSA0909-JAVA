@@ -1,0 +1,46 @@
+
+import java.util.HashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+public class UniquePermutationsNoFunction {
+    public static void main(String[] args) {
+        Scanner scan = new Scanner(System.in);
+
+        // Read the given number from the user
+        System.out.println("Given Number:");
+        String number = scan.nextLine();
+
+        // Set to store unique permutations
+        Set<String> permutations = new HashSet<>();
+
+        // Convert the number to a character array
+        char[] chars = number.toCharArray();
+        int length = chars.length;
+
+        // Iteratively generate permutations using an iterative approach
+        for (int i = 0; i < length; i++) {
+            for (int j = i; j < length; j++) {
+                // Swap characters
+                char temp = chars[i];
+                chars[i] = chars[j];
+                chars[j] = temp;
+
+                // Generate permutations of the substring
+                String perm = new String(chars);
+                permutations.add(perm);
+
+                
+            }
+        }
+
+        // Print unique permutations
+        System.out.println("Unique permutations:");
+        for (String perm : permutations) {
+            System.out.println(perm);
+        }
+
+        // Close the scanner
+        scan.close();
+    }
+}
