@@ -1,0 +1,47 @@
+// Superclass
+class Parent {
+    int number;
+
+    // Parameterized constructor of Parent class
+    public Parent(int number) {
+        this.number = number;
+        System.out.println("Parent number: " + number);
+    }
+
+    // Display method in Parent class
+    public void displayNumber() {
+        System.out.println("Parent's number: " + number);
+    }
+}
+
+// Subclass that hides the 'number' field of Parent class
+class Child extends Parent {
+    int number;  // This hides 'number' from Parent class
+
+    // Parameterized constructor of Child class
+    public Child(int parentNumber, int childNumber) {
+        super(parentNumber);  // Calls the Parent's constructor
+        this.number = childNumber;  // Initializes the Child's 'number'
+        System.out.println("Child number: " + childNumber);
+    }
+
+    // Display method in Child class (overrides Parent's method)
+    @Override
+    public void displayNumber() {
+        // Accessing Parent's 'number' using super
+        System.out.println("Parent's number (from child): " + super.number);
+        // Displaying Child's 'number'
+        System.out.println("Child's number: " + this.number);
+    }
+}
+
+// Main class to test the program
+public class MemberHidingDemo {
+    public static void main(String[] args) {
+        // Creating a Child object
+        Child child = new Child(100, 200);
+
+        // Displaying both Parent and Child number
+        child.displayNumber();
+    }
+}
