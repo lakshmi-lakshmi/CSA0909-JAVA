@@ -1,0 +1,76 @@
+import java.util.Scanner;
+
+public class NthPrimeNumbers {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input the value of N
+        System.out.println("Enter the value of N:");
+        int N = scanner.nextInt();
+        
+        // Handling edge case for N <= 0
+        if (N <= 0) {
+            System.out.println("N should be a positive integer.");
+        } else {
+            int primeCount = 0;  // To count the number of primes found
+            int currentNumber = 2;  // Start checking for prime numbers from 2
+            int nthPrime = 0;  // This will hold the Nth prime number
+            
+            // Find the Nth prime number
+            while (primeCount < N) {
+                boolean isPrime = true;
+                
+                // Check if currentNumber is prime
+                if (currentNumber <= 1) {
+                    isPrime = false;  // Numbers <= 1 are not prime
+                } else {
+                    for (int i = 2; i <= currentNumber / 2; i++) {
+                        if (currentNumber % i == 0) {
+                            isPrime = false;  // Number is divisible, so it's not prime
+                            break;
+                        }
+                    }
+                }
+                
+                if (isPrime) {
+                    primeCount++;  // Increase prime count
+                    nthPrime = currentNumber;  // Store the Nth prime number
+                }
+
+                currentNumber++;  // Move to the next number
+            }
+
+            // Output the Nth prime number
+            System.out.println(N + "th Prime number is: " + nthPrime);
+            
+            // Reset prime count and current number to find next N primes after nthPrime
+            int countAfterNth = 0;
+            currentNumber = nthPrime + 1;  // Start checking numbers after nthPrime
+            
+            System.out.println(N + " prime numbers after " + nthPrime + " are:");
+            
+            while (countAfterNth < N) {
+                boolean isPrime = true;
+                
+                // Check if currentNumber is prime
+                if (currentNumber <= 1) {
+                    isPrime = false;
+                } else {
+                    for (int i = 2; i <= currentNumber / 2; i++) {
+                        if (currentNumber % i == 0) {
+                            isPrime = false;  // Number is divisible, so it's not prime
+                            break;
+                        }
+                    }
+                }
+                
+                if (isPrime) {
+                    System.out.print(currentNumber + " ");  // Print the prime number
+                    countAfterNth++;  // Increase count of primes found after nthPrime
+                }
+
+                currentNumber++;  // Move to the next number
+            }
+        }
+    }
+}
