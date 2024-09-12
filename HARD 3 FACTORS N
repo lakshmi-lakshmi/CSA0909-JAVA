@@ -1,0 +1,34 @@
+package modelexam;
+import java.util.Scanner;
+
+public class factor {
+    public static void main(String args[]) {
+        int number, n, i;
+        int fact_count = 0;
+        int fact_n = -1;
+
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the number:");
+        number = scan.nextInt();
+        System.out.println("Enter n:");
+        n = scan.nextInt();
+
+        for (i = 1; i <= number; i++) {
+            if (number % i == 0) {
+                fact_count++;
+                if (fact_count == n) {
+                    fact_n = i;
+                }
+            }
+        }
+
+        System.out.println("Number of factors = " + fact_count);
+        if (fact_n != -1) {
+            System.out.println(n + "th factor of " + number + " = " + fact_n);
+        } else {
+            System.out.println("The number " + number + " does not have " + n + " factors.");
+        }
+
+        scan.close();
+    }
+}
