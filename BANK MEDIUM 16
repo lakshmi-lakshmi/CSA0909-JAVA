@@ -1,0 +1,40 @@
+import java.util.Scanner;
+
+public class Bank {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Test case 1
+        System.out.println("Enter bank name:");
+        String bankName1 = scanner.nextLine();
+        System.out.println("Enter interest rate:");
+        double interestRate1 = scanner.nextDouble();
+        scanner.nextLine();  // Consume newline
+        System.out.println("Bank Name: " + bankName1 + ", Rate of Interest: " + interestRate1 + "%");
+        System.out.println("Enter bank name:");
+        String bankName2 = scanner.nextLine();
+        System.out.println("Enter interest rate:");
+        double interestRate2 = scanner.nextDouble();
+        scanner.nextLine();  // Consume newline
+        System.out.println("Bank Name: " + bankName2 + ", Rate of Interest: " + interestRate2 + "%");
+        System.out.println("Enter bank name:");
+        String bankName3 = scanner.nextLine();
+        System.out.println("Enter interest rate:");
+        double interestRate3 = scanner.nextDouble();
+        scanner.nextLine();  // Consume newline
+        System.out.println("Bank Name: " + bankName3 + ", Rate of Interest: " + interestRate3 + "%");
+        System.out.println("Enter bank name:");
+        String bankName4 = scanner.nextLine();
+        System.out.println("Enter interest rate:");
+        double interestRate4 = scanner.nextDouble();
+        scanner.nextLine();  // Consume newline
+        System.out.println("Bank Name: " + bankName4 + ", Rate of Interest: " + interestRate4 + "%");
+
+        // Test case 5
+        System.out.println("Enter bank name:");
+        String bankName5 = scanner.nextLine();
+        System.out.println("Enter interest rate:");
+        double interestRate5 = scanner.nextDouble();
+        System.out.println("Bank Name: " + bankName5 + ", Rate of Interest: " + interestRate5 + "%");
+    }
+}
