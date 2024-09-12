@@ -1,0 +1,20 @@
+package SCANNER;
+import java.util.Scanner;
+public class HARDDAYS {
+	public static void main(String args[])
+	{
+		        Scanner scanner = new Scanner(System.in);
+		        System.out.println(" number of days:");
+		        int totalDays = scanner.nextInt();
+		        int years = totalDays / 365;
+		        totalDays %= 365;
+		        int weeks = totalDays / 7;
+		        int days = totalDays % 7;
+		        System.out.println("years = " + years);
+		        System.out.println("weaks = " + weeks);
+		        System.out.println("days = " + days);
+
+		        scanner.close();
+		    }
+
+	}
