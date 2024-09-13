@@ -1,0 +1,26 @@
+import java.util.Scanner;
+import java.util.Set;
+import java.util.HashSet;
+public class Permutations{
+  public static void main(String args[]){
+    Scanner scan=new Scanner(System.in);
+    System.out.println("Entr number:");
+    String num=scan.nextLine();
+    Set<String> Permutations=new HashSet<>();
+    char[] chars=num.toCharArray();
+    int length=chars.length;
+    for(int i=0;i<length;i++){
+      for(int j=0;j<length;j++){
+        char temp=chars[i];
+        chars[i]=chars[j];
+        chars[j]=temp;
+        String perm=new String(chars);
+        Permutations.add(perm);
+      }
+    }
+    System.out.println("unique PErmutations:");
+    for(String perm:Permutations){
+      System.out.println(perm);
+    }
+  }
+}
