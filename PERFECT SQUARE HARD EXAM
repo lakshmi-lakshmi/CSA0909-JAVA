@@ -1,0 +1,27 @@
+import java.util.Scanner;
+import java.util.List;
+import java.util.ArrayList;
+public class Perfect{
+  public static void main(String args[]){
+    Scanner scan=new Scanner(System.in);
+    System.out.println("Enter lower and upper :");
+    int lower=scan.nextInt();
+    int upper=scan.nextInt();
+    List<Integer> Perfect=new ArrayList<>();
+    for(int i=lower;i<upper;i++){
+      int sqrt=(int)Math.sqrt(i);
+      if(sqrt*sqrt==i){
+        int sum=0;
+        int num=i;
+        while(num>0){
+          sum+=num%10;
+          num/=10;
+        }
+        if(sum<10){
+          Perfect.add(i);
+        }
+      }
+    }
+    System.out.println(Perfect);
+  }
+}
