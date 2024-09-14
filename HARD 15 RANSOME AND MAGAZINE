@@ -1,0 +1,44 @@
+import java.util.Scanner;
+public class RansomNote {
+
+    // Method to check if ransomNote can be constructed from magazine
+    public static boolean canConstruct(String ransomNote, String magazine) {
+        int[] letterCount = new int[26]; // Array to store letter frequencies
+
+        // Count the frequency of each letter in magazine
+        for (char c : magazine.toCharArray()) {
+            letterCount[c - 'a']++;
+        }
+
+        // Check if ransomNote can be constructed from magazine
+        for (char c : ransomNote.toCharArray()) {
+            if (letterCount[c - 'a'] == 0) {
+                return false; // If a letter in ransomNote is not available in magazine
+            }
+            letterCount[c - 'a']--; // Use the letter from magazine
+        }
+
+        return true; // If all letters of ransomNote are available
+    }
+
+    // Main method to take input from the user
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Input ransomNote and magazine strings from user
+        System.out.println("Enter the ransom note: ");
+        String ransomNote = scanner.nextLine();
+        System.out.println("Enter the magazine text: ");
+        String magazine = scanner.nextLine();
+
+        // Check if ransomNote can be constructed
+        boolean result = canConstruct(ransomNote, magazine);
+
+        // Output the result
+        if (result) {
+            System.out.println("True - Ransom note can be constructed.");
+        } else {
+            System.out.println("False - Ransom note cannot be constructed.");
+        }
+    }
+}
