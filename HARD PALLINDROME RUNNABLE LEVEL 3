@@ -1,0 +1,72 @@
+// Thread to check palindrome for numbers
+class NumberPalindrome implements Runnable {
+    private int number;
+
+    public NumberPalindrome(int number) {
+        this.number = number;
+    }
+
+    @Override
+    public void run() {
+        int original = number;
+        int reversed = 0;
+        int remainder;
+
+        // Reverse the number
+        while (number != 0) {
+            remainder = number % 10;
+            reversed = reversed * 10 + remainder;
+            number /= 10;
+        }
+
+        // Check if reversed number is equal to original
+        if (original == reversed) {
+            System.out.println(original + " is a palindrome number.");
+        } else {
+            System.out.println(original + " is not a palindrome number.");
+        }
+    }
+}
+
+// Thread to check palindrome for strings
+class StringPalindrome implements Runnable {
+    private String text;
+
+    public StringPalindrome(String text) {
+        this.text = text;
+    }
+
+    @Override
+    public void run() {
+        String reversed = "";
+        int length = text.length();
+
+        // Reverse the string
+        for (int i = length - 1; i >= 0; i--) {
+            reversed += text.charAt(i);
+        }
+
+        // Check if reversed string is equal to original
+        if (text.equals(reversed)) {
+            System.out.println(text + " is a palindrome string.");
+        } else {
+            System.out.println(text + " is not a palindrome string.");
+        }
+    }
+}
+
+public class PalindromeCheck {
+    public static void main(String[] args) {
+        // Creating objects for palindrome checks
+        NumberPalindrome numberPalindrome = new NumberPalindrome(121);  // Replace with any number
+        StringPalindrome stringPalindrome = new StringPalindrome("racecar");  // Replace with any string
+
+        // Creating threads
+        Thread numberThread = new Thread(numberPalindrome);
+        Thread stringThread = new Thread(stringPalindrome);
+
+        // Starting threads
+        numberThread.start();
+        stringThread.start();
+    }
+}
