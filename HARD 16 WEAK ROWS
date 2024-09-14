@@ -1,0 +1,48 @@
+import java.util.*;
+public class WeakestRows {
+    public static int[] kWeakestRows(int[][] mat, int k) {
+        int[][] soldierCount = new int[mat.length][2];
+        for (int i = 0; i < mat.length; i++) {
+            int count = 0;
+            for (int j = 0; j < mat[i].length; j++) {
+                if (mat[i][j] == 1) {
+                    count++;  
+                }
+            }
+            soldierCount[i][0] = count; 
+            soldierCount[i][1] = i;     
+        }
+        Arrays.sort(soldierCount, (a, b) -> {
+            if (a[0] == b[0]) {
+                return a[1] - b[1]; 
+            } else {
+                return a[0] - b[0]; 
+            }
+        });
+        int[] weakestRows = new int[k];
+        for (int i = 0; i < k; i++) {
+            weakestRows[i] = soldierCount[i][1]; 
+        }
+
+        return weakestRows;
+    }
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the number of rows (m): ");
+        int m = scanner.nextInt();
+        System.out.println("Enter the number of columns (n): ");
+        int n = scanner.nextInt();
+        int[][] mat = new int[m][n];
+        System.out.println("Enter the matrix (1 for soldier, 0 for civilian): ");
+        for (int i = 0; i < m; i++) {
+            System.out.println("Enter row " + (i + 1) + ": ");
+            for (int j = 0; j < n; j++) {
+                mat[i][j] = scanner.nextInt();
+            }
+        }
+        System.out.println("Enter the number of weakest rows (k): ");
+        int k = scanner.nextInt();
+        int[] result = kWeakestRows(mat, k);
+        System.out.println("The indices of the " + k + " weakest rows are: " + Arrays.toString(result));
+    }
+}
