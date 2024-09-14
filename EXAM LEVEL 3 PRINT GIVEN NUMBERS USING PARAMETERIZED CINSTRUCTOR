@@ -1,0 +1,44 @@
+// Parent class to hold the numbers
+class NumberHolder {
+    int firstNumber;
+    int secondNumber;
+
+    // Constructor in the parent class
+    public NumberHolder(int firstNumber, int secondNumber) {
+        this.firstNumber = firstNumber;
+        this.secondNumber = secondNumber;
+    }
+
+    // Method to display the numbers
+    public void displayNumbers() {
+        System.out.println("First number: " + firstNumber);
+        System.out.println("Second number: " + secondNumber);
+    }
+}
+
+// Subclass that uses super to call the parent class constructor
+class DisplayTwoNumbers extends NumberHolder {
+
+    // Constructor in the subclass that calls the parent constructor using super
+    public DisplayTwoNumbers(int firstNumber, int secondNumber) {
+        super(firstNumber, secondNumber); // Calls the parent class constructor
+    }
+
+    // Optionally, you can override the method or add more functionality
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Input two numbers
+        java.util.Scanner scanner = new java.util.Scanner(System.in);
+        System.out.print("Enter the first number: ");
+        int firstNumber = scanner.nextInt();
+        System.out.print("Enter the second number: ");
+        int secondNumber = scanner.nextInt();
+        scanner.close();
+
+        // Create an object of DisplayTwoNumbers and display the entered numbers
+        DisplayTwoNumbers numbers = new DisplayTwoNumbers(firstNumber, secondNumber);
+        numbers.displayNumbers();
+    }
+}
