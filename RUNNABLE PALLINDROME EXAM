@@ -1,0 +1,63 @@
+import java.util.Scanner;
+class PNumber implements Runnable{
+  private int number;
+  public PNumber(int number){
+    this.number=number;
+  }
+  public void run(){
+    int rev=0,ori=number;
+    while(number>0){
+      int digit=number%10;
+      rev=rev*10+digit;
+      number/=10;
+    }
+    if(ori==rev){
+      System.out.println("Pallindrome");
+    }
+    else{
+      System.out.println("Not a Pallindrome");
+    }
+  }
+}
+class PString implements Runnable{
+  private String word;
+  public PString(String word){
+    this.word=word;
+  }
+  public void run(){
+    String rev=" ";
+    for(int i=word.length()-1;i>=0;i--){
+      rev+=word.charAt(i);
+    }
+    if(word.equals(rev)){
+      System.out.println("Pallindrome");
+    }
+    else{
+      System.out.println("Not a Pallindrome");
+    }
+  }
+}
+public class main{
+public static void main(String args[]){
+  Scanner scan=new Scanner(System.in);
+  System.out.println("Enter choice:");
+  int n=scan.nextInt();
+  if(n==1){
+    System.out.println("Enter number:");
+    int num=scan.nextInt();
+    PNumber number=new PNumber(num);
+    Thread nthread=new Thread(number);
+    nthread.start();
+  }
+  else if(n==2){
+    System.out.println("Enter word:");
+    String str=scan.nextLine();
+    PString string=new PString(str);
+    Thread sthread=new Thread(string);
+    sthread.start();
+  }
+  else{
+    System.out.println("Invalid choice");
+  }
+} 
+}  
