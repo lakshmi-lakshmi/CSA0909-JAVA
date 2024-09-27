@@ -1,0 +1,37 @@
+class SuperClass {
+    int number;
+
+    // Parameterized constructor of SuperClass
+    public SuperClass(int number) {
+        this.number = number;
+    }
+
+    // Method to display the number in the superclass
+    public void display() {
+        System.out.println("SuperClass Number: " + number);
+    }
+}
+
+class SubClass extends SuperClass {
+    int number; // This hides the 'number' from SuperClass
+
+    // Parameterized constructor of SubClass
+    public SubClass(int superNumber, int subNumber) {
+        super(superNumber); // Call to SuperClass constructor
+        this.number = subNumber; // Initialize SubClass's 'number'
+    }
+
+    // Method to display both SuperClass and SubClass numbers
+    public void display() {
+        super.display(); // Call SuperClass's display method
+        System.out.println("SubClass Number: " + number);
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        // Sample input
+        SubClass obj = new SubClass(100, 200);
+        obj.display(); // Output: 100, 200
+    }
+}
